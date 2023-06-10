@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import socket from '../../services/socket';
 
 
-function RegistrationForm(){
+function RegistrationForm({setUserData}){
         const [username,setUsername] = useState('')
         const [passwd,setPasswd] = useState('')
         const [dialog,setDialog] = useState("let's get started with making an account first.")
@@ -12,6 +12,8 @@ function RegistrationForm(){
         const navigate = useNavigate();
 
         const handleSubmit = async (e)=>{
+            const maxTries = 3
+            let tries = 0
             e.preventDefault()
             
             const userData = {
@@ -27,14 +29,16 @@ function RegistrationForm(){
                 return
             }
  
-            //socket code
-            socket.connect()
-
+            setUserData(userData)
             
             
-
+           await postData()
+            
+             
+        async  function postData(){
+                 
             try{
-                console.log(userData)
+              
                 const response = await fetch('http://localhost:3000/api/register',{
                     method:'POST',
                     headers:{
@@ -43,7 +47,8 @@ function RegistrationForm(){
                     body:JSON.stringify(userData)
                 })
 
-                if(response.ok){                
+                if(response.ok){ 
+                    socket.emit('setId',userData)
                     navigate('/contacts');
                 }
                 else{
@@ -52,12 +57,19 @@ function RegistrationForm(){
                     
                 }
             }catch(err){
-                console.log(err)
+                if(tries <= maxTries){
+                    tries++
+                    postData()
+                }
+                console.error(err)
+                return
             }
             
         }
-    
 
+            
+        }
+   
 
         return (
             <div className="w-[100%] h-full bg-[url('/src/assests/pexels-henry-&-co-1939485.jpg')] bg-cover flex justify-center">

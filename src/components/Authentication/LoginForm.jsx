@@ -4,7 +4,7 @@ import socket from '../../services/socket';
 
 
 
- export default function LoginForm(){
+ export default function LoginForm({setUserData}){
    const [username,setUsername] = useState('')    
    const [passwd,setPasswd] = useState('')
    const [error1, setError1] = useState('')
@@ -17,7 +17,7 @@ import socket from '../../services/socket';
             passwd,
             online:true
          }
-      
+         setUserData(userData)
 
          try{
             const response = await fetch('http://localhost:3000/api/login',{
@@ -34,8 +34,8 @@ import socket from '../../services/socket';
                   if(result.response === 1){
                      setError1('')
                      setError2('')
-                     socket.connect();    
-                     socket.emit('userdata',userData)    
+                     
+                     socket.emit('setId',userData)    
                      navigate('/contacts');
                      
                   }

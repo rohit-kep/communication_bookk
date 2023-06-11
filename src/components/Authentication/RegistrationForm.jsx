@@ -72,18 +72,18 @@ function RegistrationForm({setUserData}){
    
 
         return (
-            <div className="w-[100%] h-full bg-[url('/src/assests/pexels-henry-&-co-1939485.jpg')] bg-cover flex justify-center">
-                    <div className=' w-[375px] h-auto mt-[100px] flex flex-col items-center  gap-[1.5rem]'>
-                    <h1 className=' text-gray-900 w-full text-left text-[1.5rem]'>Welcome to Chatbook</h1>
-                     <p  className=' w-full text-left text-[.9rem] text-slate-500 pb-[1em]'>{dialog}</p>   
+            <div className="w-[100%] h-full bg-darkThemeBakground-100 bg-cover flex justify-center max-[375px]:p-[1em] max-[375px]:text-center">
+                    <div className=' w-[375px] h-auto mt-[100px] flex flex-col items-center  gap-[1.5rem] max-[375px]:gap-[1.7rem]'>
+                    <h1 className=' text-white w-full text-left text-[1.5rem] max-[375px]:text-center'>Welcome to Chatbook</h1>
+                     <p  className=' w-full text-left text-[.9rem] text-slate-300 pb-[1em] max-[375px]:text-center'>{dialog}</p>   
                         <span className='w-full'>
-                        <input className=' w-full bg-slate-200 p-[.7em] rounded-md outline-none focus:bg-blue-400 focus:placeholder:text-white focus:text-white' type="text" id='username' placeholder='ur name plz' value={username} onChange={(e)=>{setError(''); setDialog("let's get started with making an account first.");  setUsername(e.target.value)}}/>    
+                        <input className=' w-full bg-slate-200 p-[.7em] rounded-[1.5em] outline-none focus:bg-blue-400 focus:placeholder:text-white focus:text-white' type="text" id='username' placeholder='ur name plz' value={username} onChange={(e)=>{setError(''); setDialog("let's get started with making an account first.");  setUsername(e.target.value)}}/>    
                          <p className='text-red-500 text-[.8em]'>{error}</p>
                         </span>
 
-                        <input className=' w-full  bg-slate-200 p-[.7em] rounded-md outline-none focus:bg-blue-400 focus:placeholder:text-white focus:text-white' type="text" id='passwd' placeholder='now ur password sir' value={passwd} onChange={(e)=>{setPasswd(e.target.value)}}/>    
+                        <input className=' w-full  bg-slate-200 p-[.7em] rounded-[1.5em] outline-none focus:bg-blue-400 focus:placeholder:text-white focus:text-white' type="text" id='passwd' placeholder='now ur password sir' value={passwd} onChange={(e)=>{setPasswd(e.target.value)}}/>    
                     <div className=' w-full'>
-                    <button onClick={handleSubmit} className='w-full p-[1em] bg-blue-500 rounded-md text-white active:bg-blue-400 mb-[1em]'>Create User</button>
+                    <button onClick={handleSubmit} className='w-full p-[1em] bg-blue-500 rounded-[1.5em] text-white active:bg-blue-400 mb-[1em] '>Create User</button>
                     <Link className='text-[.9em] text-blue-500 hover:text-blue-400' to={'/login'}>Already have an account?</Link>                    
                     </div>
 

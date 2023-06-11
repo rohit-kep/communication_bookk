@@ -6,13 +6,21 @@ export default {
     extend: {
       colors:{
         aqua:{
-          100:'#57e3c9',
-          200:'#5dccbf',
-          300:'#32baaa',
-          400:'#28908c',
-          500:'#027b75',
-        }
+          100:'#caf0fa',
+          200:'#90e0ef',
+          300:'#00b4d8',
+          400:'#0077b6',
+          500:'#03045e',
+        },
+        darkThemeBakground:{
+          100:'#17132b',
+          200:'#100826ff',
+          300:'#2f1180ff'
+        },
+        darkThemeHighlight:'#fe754d',
+        darkThemeHighlight:'ffffff0f',
       },
+
     },
   },
   plugins: [],

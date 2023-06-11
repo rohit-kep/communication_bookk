@@ -31,7 +31,7 @@ function App(){
     },[])
   
     return (
-      <div className='container h-[100vh] mx-auto '>
+      <div className='container h-[100vh] mx-auto'>
           <Router>
             <Routes>
               <Route  exact path='/' element={<RegistrationForm setUserData={setUserData}/>}></Route>

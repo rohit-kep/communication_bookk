@@ -39,7 +39,7 @@ function ContactList() {
     return (
       <div className="w-full h-full bg-gray-800 flex flex-col">
         <SearchBar />
-        <div className="w-full h-full overflow-auto">
+        <div className="w-full h-full overflow-auto flex flex-col gap-[.3em]">
           {contacts.map((item, index) => (
              <Contact key={index + item.username} username = {item.username}></Contact>
             ))}

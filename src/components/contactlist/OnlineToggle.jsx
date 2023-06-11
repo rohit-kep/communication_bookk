@@ -19,8 +19,8 @@ const OnlineToggle = () => {
   };
 
   return (
-    <label className=" w-[100px]  flex flex-col justify-center items-start gap-[.4em] cursor-pointer">
-      <div className="  text-gray-700 font-medium">Online</div>
+    <label className=" w-[100px]  flex flex-col justify-center items-start max-[375px]:items-end gap-[.4em] cursor-pointer">
+      
       <div className="relative">
         <input
           type="checkbox"
@@ -28,7 +28,7 @@ const OnlineToggle = () => {
           checked={isChecked}
           onChange={handleToggle}
         />
-        <div className="w-10 h-5 bg-gray-600 rounded-full shadow-inner"></div>
+        <div className={`w-10 h-5 ${isChecked? 'bg-green-300':'bg-gray-600'}  rounded-full shadow-inner`}></div>
         <div
           className={`${
             isChecked ? 'bg-blue-500' : 'bg-gray-300'

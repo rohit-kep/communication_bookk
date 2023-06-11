@@ -1,20 +1,24 @@
 import  { useEffect, useState } from 'react';
 
-const OnlineToggle = () => {
-  const [isChecked, setIsChecked] = useState(false);
+const OnlineToggle = ({userData}) => {
+  const [isChecked, setIsChecked] = useState(true);
 
   useEffect(()=>{
-    if(isChecked){
-      fetch('http://localhost:3000/api/contacts/online')
-      .then(res=> res.json())
-      .then(data => console.log(data))
-    }
+      
+      fetch('http://localhost:3000/api/contacts/online',{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json',
+                },
+                body:JSON.stringify(userData)
+            })
+
   },[isChecked])
 
   const handleToggle = () => {
     
-
     setIsChecked(!isChecked);
+    
     
   };
 

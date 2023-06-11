@@ -35,7 +35,8 @@ import socket from '../../services/socket';
                      setError1('')
                      setError2('')
                      
-                     socket.emit('setId',userData)    
+                     localStorage.setItem('authenticationDetails',JSON.stringify(userData))
+                     // socket.emit('setId',userData)    
                      navigate('/contacts');
                      
                   }

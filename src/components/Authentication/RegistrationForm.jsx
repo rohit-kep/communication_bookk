@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, json } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import socket from '../../services/socket';
 
@@ -48,7 +48,7 @@ function RegistrationForm({setUserData}){
                 })
 
                 if(response.ok){ 
-                    socket.emit('setId',userData)
+                    localStorage.setItem('authenticationDetails',JSON.stringify(userData))
                     navigate('/contacts');
                 }
                 else{

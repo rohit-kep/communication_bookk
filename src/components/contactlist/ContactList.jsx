@@ -3,9 +3,9 @@ import Contact from "./Contact";
 import { useEffect } from "react";
 import { useState } from "react";
 
-function ContactList() {
+function ContactList({user}) {
     const [contacts, setContacts] = useState([]);
-  
+    
     useEffect(() => {
       fetchData();
     }, []);
@@ -38,11 +38,16 @@ function ContactList() {
     
     return (
       <div className="w-full h-full bg-gray-800 flex flex-col">
-        <SearchBar />
+        <SearchBar user={user} />
         <div className="w-full h-full overflow-auto flex flex-col gap-[.3em]">
-          {contacts.map((item, index) => (
-             <Contact key={index + item.username} username = {item.username}></Contact>
-            ))}
+          {contacts.map((item, index) => {
+            if(item.username === user.username){
+              return null
+            }
+            
+            return <Contact key={index + item.username} username = {item.username} online={item.online}></Contact>
+          
+          })}
         </div>
        
       </div>
